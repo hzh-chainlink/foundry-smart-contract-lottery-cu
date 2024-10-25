@@ -1,3 +1,144 @@
+## Deploy（你需要在 HelperConfig 中设置自己的订阅 ID 和对应的钱包地址）
+```shell
+(base) alex@DESKTOP-UKE5TJQ:~/share/foundry-smart-contract-lottery-cu$ make deploy ARGS="--network sepolia"
+[⠊] Compiling...
+No files changed, compilation skipped
+Traces:
+  [12122214] DeployRaffle::run()
+    ├─ [4977223] → new HelperConfig@0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141
+    │   └─ ← [Return] 22963 bytes of code
+    ├─ [6064979] → new AddConsumer@0xdaE97900D4B184c5D2012dcdB658c008966466DD
+    │   └─ ← [Return] 30177 bytes of code
+    ├─ [2305] HelperConfig::getConfig()
+    │   └─ ← [Return] NetworkConfig({ subscriptionId: 78115397582864920796890914656003262667807066576170740381173807521345994681430 [7.811e76], gasLane: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae, automationUpdateInterval: 30, raffleEntranceFee: 10000000000000000 [1e16], callbackGasLimit: 500000 [5e5], vrfCoordinatorV2_5: 0x9DdfaCa8183c41ad55329BdeeD9F6A8d53168B1B, link: 0x779877A7B0D9E8603169DdbD7836e478b4624789, account: 0xDBbf53236940312438517a348e8D1a3C43cB38A2 })
+    ├─ [0] VM::startBroadcast(0xDBbf53236940312438517a348e8D1a3C43cB38A2)
+    │   └─ ← [Return] 
+    ├─ [884145] → new Raffle@0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd
+    │   └─ ← [Return] 4070 bytes of code
+    ├─ [0] VM::stopBroadcast()
+    │   └─ ← [Return] 
+    ├─ [82033] AddConsumer::addConsumer(Raffle: [0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd], VRFCoordinatorV2_5: [0x9DdfaCa8183c41ad55329BdeeD9F6A8d53168B1B], 78115397582864920796890914656003262667807066576170740381173807521345994681430 [7.811e76], 0xDBbf53236940312438517a348e8D1a3C43cB38A2)
+    │   ├─ [0] console::log("Adding consumer contract: ", Raffle: [0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd]) [staticcall]
+    │   │   └─ ← [Stop] 
+    │   ├─ [0] console::log("Using vrfCoordinator: ", VRFCoordinatorV2_5: [0x9DdfaCa8183c41ad55329BdeeD9F6A8d53168B1B]) [staticcall]
+    │   │   └─ ← [Stop] 
+    │   ├─ [0] console::log("On ChainID: ", 11155111 [1.115e7]) [staticcall]
+    │   │   └─ ← [Stop] 
+    │   ├─ [0] VM::startBroadcast(0xDBbf53236940312438517a348e8D1a3C43cB38A2)
+    │   │   └─ ← [Return] 
+    │   ├─ [73242] VRFCoordinatorV2_5::addConsumer(78115397582864920796890914656003262667807066576170740381173807521345994681430 [7.811e76], Raffle: [0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd])
+    │   │   ├─ emit SubscriptionConsumerAdded(subId: 78115397582864920796890914656003262667807066576170740381173807521345994681430 [7.811e76], consumer: Raffle: [0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd])
+    │   │   └─ ← [Stop] 
+    │   ├─ [0] VM::stopBroadcast()
+    │   │   └─ ← [Return] 
+    │   └─ ← [Stop] 
+    └─ ← [Return] Raffle: [0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd], HelperConfig: [0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141]
+
+
+Script ran successfully.
+
+== Return ==
+0: contract Raffle 0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd
+1: contract HelperConfig 0xC7f2Cf4845C6db0e1a1e91ED41Bcd0FcC1b0E141
+
+== Logs ==
+  Adding consumer contract:  0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd
+  Using vrfCoordinator:  0x9DdfaCa8183c41ad55329BdeeD9F6A8d53168B1B
+  On ChainID:  11155111
+
+## Setting up 1 EVM.
+==========================
+Simulated On-chain Traces:
+
+  [884145] → new Raffle@0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd
+    └─ ← [Return] 4070 bytes of code
+
+  [73242] VRFCoordinatorV2_5::addConsumer(78115397582864920796890914656003262667807066576170740381173807521345994681430 [7.811e76], Raffle: [0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd])
+    ├─ emit SubscriptionConsumerAdded(subId: 78115397582864920796890914656003262667807066576170740381173807521345994681430 [7.811e76], consumer: Raffle: [0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd])
+    └─ ← [Stop] 
+
+
+==========================
+
+Chain 11155111
+
+Estimated gas price: 0.328411235 gwei
+
+Estimated total gas used for script: 1452745
+
+Estimated amount required: 0.000477097779590075 ETH
+
+==========================
+
+##### sepolia
+✅  [Success]Hash: 0xceba4ee373978eb7ade2999a0bff191a4c17d6e44a90a161b50102a49427e1e6
+Contract Address: 0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd
+Block: 6940841
+Paid: 0.000210785246669648 ETH (1010723 gas * 0.208548976 gwei)
+
+
+##### sepolia
+✅  [Success]Hash: 0xd8bb1048fb630c90da0083702ac2fad2a83a3bd110cd764aa7670181cc27dac9
+Block: 6940841
+Paid: 0.000019850942829536 ETH (95186 gas * 0.208548976 gwei)
+
+✅ Sequence #1 on sepolia | Total Paid: 0.000230636189499184 ETH (1105909 gas * avg 0.208548976 gwei)
+                                                                                                                       
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+##
+Start verification for (1) contracts
+Start verifying contract `0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd` deployed on sepolia
+
+Submitting verification for [src/Raffle.sol:Raffle] 0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd.
+
+Submitting verification for [src/Raffle.sol:Raffle] 0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd.
+Submitted contract for verification:
+        Response: `OK`
+        GUID: `ubuhy5i4kjd6mhsspeedtzyseyf4xyghudxe2fnz9hviqjxigm`
+        URL: https://sepolia.etherscan.io/address/0x67fe96137d03cc3f8d1ae62a41f91ef717c627bd
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
+All (1) contracts were verified!
+
+Transactions saved to: /home/alex/share/foundry-smart-contract-lottery-cu/broadcast/DeployRaffle.s.sol/11155111/run-latest.json
+
+Sensitive values saved to: /home/alex/share/foundry-smart-contract-lottery-cu/cache/DeployRaffle.s.sol/11155111/run-latest.json
+```
+
+## 在执行这一步之前，你应该已经完成了 Upkeep 的注册，使用自定义逻辑，注册的合约应该是 Raffle
+## Run（如果成功，你会发现钱包余额先减少 0.1，过一会儿这 0.1 会被抽奖合约自动返还，因为只有你一个人参与抽奖）
+```shell
+(base) alex@DESKTOP-UKE5TJQ:~/share/foundry-smart-contract-lottery-cu$ cast send 0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd "enterRaffle()" --value 0.1et
+her --private-key $PRIVATE_KEY --rpc-url $SEPOLIA_RPC_URL
+
+blockHash               0x4662ec6fcb40deab5a10d2edc8a251f9be1325a9bd99779340bd246a8679447b
+blockNumber             6940924
+contractAddress         
+cumulativeGasUsed       7440450
+effectiveGasPrice       607928137
+from                    0xDBbf53236940312438517a348e8D1a3C43cB38A2
+gasUsed                 68874
+logs                    [{"address":"0x67fe96137d03cc3f8d1ae62a41f91ef717c627bd","topics":["0x0805e1d667bddb8a95f0f09880cf94f403fb596ce79928d9f29b74203ba284d4","0x000000000000000000000000dbbf53236940312438517a348e8d1a3c43cb38a2"],"data":"0x","blockHash":"0x4662ec6fcb40deab5a10d2edc8a251f9be1325a9bd99779340bd246a8679447b","blockNumber":"0x69e8fc","transactionHash":"0x48234bb862de36a6160cbd10acba808d490f98f5d85cf6394cdb4d48edbc6d7e","transactionIndex":"0x37","logIndex":"0x51","removed":false}]
+logsBloom               0x00000000000000000000000000000000000000000000000000000000000000000000000000100000000000000005000000000000000000000000000000000000000000000000000000000004000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000080000000008000000000000000004000000000000000000000000000000000000000000000000000000
+root                    
+status                  1 (success)
+transactionHash         0x48234bb862de36a6160cbd10acba808d490f98f5d85cf6394cdb4d48edbc6d7e
+transactionIndex        55
+type                    2
+blobGasPrice            
+blobGasUsed             
+authorizationList       
+to                      0x67fE96137d03Cc3F8d1aE62a41F91EF717C627Bd
+```
+
 
 > ! Updates from Video
 > 1. V2.5 of Chainlink VRF uses a `uint256` as a subId instead of a `uint64` this repo has a comment to reflect that. We added a mock in case you'd like to work with version 2.5.
